@@ -2,7 +2,6 @@ import random
 import string
 
 def generate_password(length, use_upper, use_lower, use_digits, use_symbols):
-    """Generates a random password that guarantees at least one of each selected character type."""
 
     characters = ""
     password_parts = []
@@ -24,7 +23,6 @@ def generate_password(length, use_upper, use_lower, use_digits, use_symbols):
         print("Error: You must select at least one character type.")
         return None
 
-    # Fill the rest of the password length
     remaining_length = length - len(password_parts)
     if remaining_length < 0:
         remaining_length = 0

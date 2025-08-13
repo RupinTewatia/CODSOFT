@@ -2,7 +2,6 @@ import random
 import string
 
 def generate_password(length, use_upper, use_lower, use_digits, use_symbols):
-
     characters = ""
     password_parts = []
 
@@ -32,3 +31,31 @@ def generate_password(length, use_upper, use_lower, use_digits, use_symbols):
     random.shuffle(password_parts)
 
     return "".join(password_parts)
+
+def get_user_input():
+    try:
+        length = int(input("Enter desired password length: "))
+        if length <= 0:
+            print("Password length must be a positive number.")
+            return None
+        
+        use_upper = input("Include uppercase letters? (y/n): ").lower() == 'y'
+        use_lower = input("Include lowercase letters? (y/n): ").lower() == 'y'
+        use_digits = input("Include numbers? (y/n): ").lower() == 'y'
+        use_symbols = input("Include symbols? (y/n): ").lower() == 'y'
+        
+        return length, use_upper, use_lower, use_digits, use_symbols
+    except ValueError:
+        print("Invalid input. Please enter a number for length.")
+        return None
+
+def main():
+    user_input = get_user_input()
+    if user_input:
+        length, use_upper, use_lower, use_digits, use_symbols = user_input
+        password = generate_password(length, use_upper, use_lower, use_digits, use_symbols)
+        if password:
+            print(f"\nGenerated Password: {password}")
+
+if __name__ == "__main__":
+    main()
